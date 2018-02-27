@@ -21,7 +21,9 @@
         switchSelectorColors(currentSelector[0], newSelector);
         calculateShift(selectorId);
 
-        let newTranslation = 'translateX(' + shift + '%)';
+        let scaledShift = .3333 * shift;
+
+        let newTranslation = 'translateX(' + scaledShift + '%)';
         document.getElementById('link-group').style.transform=newTranslation;
       }
 
@@ -69,26 +71,57 @@
   </head>
   <body class="sans-serif bg-near-white">
     <div class="vh-100 flex items-center justify-center">
-      <div class="w-75 flex" style="height: 450px" >
+      <div class="w-100 flex" style="height: 450px" >
+        <div class="w-20 bg-near-white z-999 mr2"></div>
         <div class="w-20 h-100 flex flex-column justify-between items-stretch f4 fw6 tc">
           <div class="mw-100 mr2 mb2 flex br2">
             <div id="link-group-selector-1" onClick="gotoLinkGroup(1)" class="link-group-selector pa1 h-100 w-third dib br2 br--left o-80 pointer light-gray bg-moon-gray">1</div>
             <div id="link-group-selector-2" onClick="gotoLinkGroup(2)" class="link-group-selector pa1 h-100 w-third dib o-80 pointer light-silver bg-light-gray">2</div>
             <div id="link-group-selector-3" onClick="gotoLinkGroup(3)" class="link-group-selector pa1 h-100 w-third dib br2 br--right o-80 pointer light-silver bg-light-gray">3</div>
           </div>
-          <div id="link-group" class="h-100 mt2 flex flex-column flex-wrap justify-between items-stretch" style="transition: all .5s ease">
-            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-orange" 
-              href="https://news.ycombinator.com">Hacker News</a>
-            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-blue" 
-              href="https://www.reddit.com">Reddit</a>
-            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-red" 
-              href="https://www.youtube.com">YouTube</a>
-            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-black" 
-              href="https://www.github.com">Github</a>
-            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-yellow" 
-              href="https://smile.amazon.com">Amazon</a>
-            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-green" 
-              href="https://www.medium.com">Medium</a>
+          <div id="link-group" class="h-100 flex flex-column flex-wrap justify-between items-stretch f4 fw6 tc" style="transition: all .5s ease; width: 300%">
+            <div class="h-100 mt2 flex flex-column justify-between items-stretch">
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-orange" 
+                href="https://news.ycombinator.com">Hacker News</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-blue" 
+                href="https://www.reddit.com">Reddit</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-red" 
+                href="https://www.youtube.com">YouTube</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-black" 
+                href="https://www.github.com">Github</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-yellow" 
+                href="https://smile.amazon.com">Amazon</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-green" 
+                href="https://www.medium.com">Medium</a>
+            </div>
+            <div class="h-100 mt2 flex flex-column justify-between items-stretch">
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-orange" 
+                href="https://news.ycombinator.com">Hacker News</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-blue" 
+                href="https://www.reddit.com">Reddit</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-red" 
+                href="https://www.youtube.com">YouTube</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-black" 
+                href="https://www.github.com">Github</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-yellow" 
+                href="https://smile.amazon.com">Amazon</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-green" 
+                href="https://www.medium.com">Medium</a>
+            </div>
+            <div class="h-100 mt2 flex flex-column justify-between items-stretch">
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-orange" 
+                href="https://news.ycombinator.com">Hacker News</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-blue" 
+                href="https://www.reddit.com">Reddit</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-red" 
+                href="https://www.youtube.com">YouTube</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-black" 
+                href="https://www.github.com">Github</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-yellow" 
+                href="https://smile.amazon.com">Amazon</a>
+              <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-green" 
+                href="https://www.medium.com">Medium</a>
+            </div>
           </div>
         </div>
         <div class="w-60 h-100 br2 bg-center z-999" style="background-image: url(./images/road_small.jpg">
@@ -96,6 +129,7 @@
         <div class="w-20 h-100 ml2">
           <div class="w-100 h-100 br2 bg-orange"></div>
         </div>
+        <div class="w-20 bg-near-white z-999"></div>
       </div>
     </div>
   </body>
