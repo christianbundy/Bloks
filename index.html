@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>
+
+    </title>
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/tachyons.css">
+    <script>
+      let shift = 0;
+
+      function gotoLinkGroup(selectorId) {
+        let newSelector = document.getElementById('link-group-selector-' + selectorId);
+        let currentSelector = [...document.getElementsByClassName('link-group-selector')]
+          .filter(s => s.classList.contains('bg-moon-gray'));
+
+        switchSelectorColors(currentSelector[0], newSelector);
+        calculateShift(selectorId);
+
+        let newTranslation = 'translateX(' + shift + '%)';
+        document.getElementById('link-group').style.transform=newTranslation;
+      }
+
+      function calculateShift(selectorId) {
+        switch (shift) {
+          case 0:
+            if (selectorId === 2) {
+              shift -= 100;
+            }
+            else if (selectorId === 3) {
+              shift -= 200;
+            }
+            break;
+          case -100:
+            if (selectorId === 1) {
+              shift += 100;
+            }
+            else if (selectorId === 3) {
+              shift -= 100;
+            }
+            break;
+          case -200:
+            if (selectorId === 1) {
+              shift += 200;
+            }
+            else if (selectorId === 2) {
+              shift += 100;
+            }
+            break;
+        }
+      }
+
+      function switchSelectorColors(currentSelector, newSelector) {
+        currentSelector.classList.remove('bg-moon-gray');
+        currentSelector.classList.remove('light-gray');
+        currentSelector.classList.add('bg-light-gray');
+        currentSelector.classList.add('light-silver');
+
+        newSelector.classList.remove('bg-light-gray');
+        newSelector.classList.remove('light-silver');
+        newSelector.classList.add('bg-moon-gray');
+        newSelector.classList.add('light-gray');
+      }
+    </script>
+  </head>
+  <body class="sans-serif bg-near-white">
+    <div class="vh-100 flex items-center justify-center">
+      <div class="w-75 flex" style="height: 450px" >
+        <div class="w-20 h-100 flex flex-column justify-between items-stretch f4 fw6 tc">
+          <div class="mw-100 mr2 mb2 flex br2">
+            <div id="link-group-selector-1" onClick="gotoLinkGroup(1)" class="link-group-selector pa1 h-100 w-third dib br2 br--left o-80 pointer light-gray bg-moon-gray">1</div>
+            <div id="link-group-selector-2" onClick="gotoLinkGroup(2)" class="link-group-selector pa1 h-100 w-third dib o-80 pointer light-silver bg-light-gray">2</div>
+            <div id="link-group-selector-3" onClick="gotoLinkGroup(3)" class="link-group-selector pa1 h-100 w-third dib br2 br--right o-80 pointer light-silver bg-light-gray">3</div>
+          </div>
+          <div id="link-group" class="h-100 mt2 flex flex-column flex-wrap justify-between items-stretch" style="transition: all .5s ease">
+            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-orange" 
+              href="https://news.ycombinator.com">Hacker News</a>
+            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-blue" 
+              href="https://www.reddit.com">Reddit</a>
+            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-red" 
+              href="https://www.youtube.com">YouTube</a>
+            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-black" 
+              href="https://www.github.com">Github</a>
+            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-yellow" 
+              href="https://smile.amazon.com">Amazon</a>
+            <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-green" 
+              href="https://www.medium.com">Medium</a>
+          </div>
+        </div>
+        <div class="w-60 h-100 br2 bg-center z-999" style="background-image: url(./images/road_small.jpg">
+        </div>
+        <div class="w-20 h-100 ml2">
+          <div class="w-100 h-100 br2 bg-orange"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
