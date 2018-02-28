@@ -39,12 +39,10 @@
         newSelector.classList.add('light-gray');
       }
 
-      function updateDozenalClock() {
-        let d = new Date();
-
-        let hours   = convertToDozenal(d.getHours());
-        let minutes = convertToDozenal(d.getMinutes());
-        let seconds = convertToDozenal(d.getSeconds());
+      function updateDozenalClock(now) {
+        let hours   = convertToDozenal(now.getHours());
+        let minutes = convertToDozenal(now.getMinutes());
+        let seconds = convertToDozenal(now.getSeconds());
         let clock = document.getElementById('clock');
         let time = hours + ':' + minutes + ':' + seconds;
         clock.textContent = time;
@@ -65,8 +63,35 @@
         return convertToDozenal(quotient, digits);
       }
 
+      function updateDay(now) {
+        let day = now.getDay();
+        let dayString = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][day];
+        document.getElementById('day').textContent = dayString;
+      }
+
+      function updateMonth(now) {
+        let date = now.getDate();
+        let month = now.getMonth();
+        let monthString = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][month];
+        let suffix = (date < 10 || date > 19) ? ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th'][date % 10] : 'th';
+        document.getElementById('month').textContent = 'the ' + date + suffix + ' of ' + monthString;
+      }
+
+      function updateYear(now) {
+        let year = now.getFullYear();
+        document.getElementById('year').textContent = year
+      }
+
+      function updateDateTime() {
+        let now = new Date();
+        updateDozenalClock(now);
+        updateDay(now);
+        updateMonth(now);
+        updateYear(now);
+      }
+
       // update clock once a second
-      setInterval(updateDozenalClock, 1000);
+      setInterval(updateDateTime, 1000);
     </script>
   </head>
   <body class="sans-serif bg-near-white">
@@ -128,7 +153,9 @@
         </div>
         <div class="w-30 h-100 ml2 flex flex-column items-stretch">
           <h4 id="clock" class="w-100 f1 ma0 pa0 tracked-tight"></h4>
-          <h4 id="day" class="w-100 f1 ma0 pa0 pr1 ttl tracked-tight" style="word-wrap: break-word">Wednesday</h4>
+          <h4 id="day" class="w-100 f1 ma0 pa0 pr1 ttl tracked-tight" style="word-wrap: break-word"></h4>
+          <h4 id="month" class="w-100 f1 ma0 pa0 pr1 ttl tracked-tight" style="word-wrap: break-word"></h4>
+          <h4 id="year" class="w-100 f1 ma0 pa0 pr1 ttl tracked-tight" style="word-wrap: break-word"></h4>
           <div class="h-100 w-100 br2 bg-orange"></div>
         </div>
         <div class="w-10 bg-near-white z-999"></div>
