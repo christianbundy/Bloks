@@ -13,47 +13,18 @@
     <script>
       let shift = 0;
 
-      function gotoLinkGroup(selectorId) {
-        let newSelector = document.getElementById('link-group-selector-' + selectorId);
+      function gotoLinkGroup(selectorIndex) {
+        let newSelector = document.getElementById('link-group-selector-' + selectorIndex);
         let currentSelector = [...document.getElementsByClassName('link-group-selector')]
-          .filter(s => s.classList.contains('bg-moon-gray'));
+          .filter(s => s.classList.contains('bg-moon-gray'))[0];
+        let currentSelectorIndex = currentSelector.id.split('-')[3];
 
-        switchSelectorColors(currentSelector[0], newSelector);
-        calculateShift(selectorId);
-
-        let scaledShift = .3333 * shift;
+        switchSelectorColors(currentSelector, newSelector);
+        shift += selectorIndex - currentSelectorIndex;
+        let scaledShift = -33.33 * shift;
 
         let newTranslation = 'translateX(' + scaledShift + '%)';
         document.getElementById('link-group').style.transform=newTranslation;
-      }
-
-      function calculateShift(selectorId) {
-        switch (shift) {
-          case 0:
-            if (selectorId === 2) {
-              shift -= 100;
-            }
-            else if (selectorId === 3) {
-              shift -= 200;
-            }
-            break;
-          case -100:
-            if (selectorId === 1) {
-              shift += 100;
-            }
-            else if (selectorId === 3) {
-              shift -= 100;
-            }
-            break;
-          case -200:
-            if (selectorId === 1) {
-              shift += 200;
-            }
-            else if (selectorId === 2) {
-              shift += 100;
-            }
-            break;
-        }
       }
 
       function switchSelectorColors(currentSelector, newSelector) {
@@ -67,20 +38,49 @@
         newSelector.classList.add('bg-moon-gray');
         newSelector.classList.add('light-gray');
       }
+
+      function updateDozenalClock() {
+        let d = new Date();
+
+        let hours   = convertToDozenal(d.getHours());
+        let minutes = convertToDozenal(d.getMinutes());
+        let seconds = convertToDozenal(d.getSeconds());
+        let clock = document.getElementById('clock');
+        let time = hours + ':' + minutes + ':' + seconds;
+        clock.textContent = time;
+      }
+
+      function convertToDozenal(x, digits = []) {
+        let remainder = x % 12;
+        let quotient = Math.floor(x / 12);
+
+        digits.push(remainder);
+
+        if (quotient === 0) {
+          return digits
+            .map(d => ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'D', 'E'][d])
+            .reverse()
+            .join('');
+        } 
+        return convertToDozenal(quotient, digits);
+      }
+
+      // update clock once a second
+      setInterval(updateDozenalClock, 1000);
     </script>
   </head>
   <body class="sans-serif bg-near-white">
     <div class="vh-100 flex items-center justify-center">
-      <div class="w-100 flex" style="height: 450px" >
-        <div class="w-20 bg-near-white z-999 mr2"></div>
-        <div class="w-20 h-100 flex flex-column justify-between items-stretch f4 fw6 tc">
+      <div class="w-100 flex f4 fw6" style="height: 450px" >
+        <div class="w-10 bg-near-white z-999 mr2"></div>
+        <div class="w-30 h-100 flex flex-column justify-between items-stretch tc">
           <div class="mw-100 mr2 mb2 flex br2">
             <div id="link-group-selector-1" onClick="gotoLinkGroup(1)" class="link-group-selector pa1 h-100 w-third dib br2 br--left o-80 pointer light-gray bg-moon-gray">1</div>
             <div id="link-group-selector-2" onClick="gotoLinkGroup(2)" class="link-group-selector pa1 h-100 w-third dib o-80 pointer light-silver bg-light-gray">2</div>
             <div id="link-group-selector-3" onClick="gotoLinkGroup(3)" class="link-group-selector pa1 h-100 w-third dib br2 br--right o-80 pointer light-silver bg-light-gray">3</div>
           </div>
-          <div id="link-group" class="h-100 flex flex-column flex-wrap justify-between items-stretch f4 fw6 tc" style="transition: all .5s ease; width: 300%">
-            <div class="h-100 mt2 flex flex-column justify-between items-stretch">
+          <div id="link-group" class="h-100 flex flex-column flex-wrap items-stretch f3 fw6 tl tracked-tight" style="transition: all .5s ease; width: 300%">
+            <div class="h-100 w-third mt2 flex flex-column justify-between items-stretch">
               <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-orange" 
                 href="https://news.ycombinator.com">Hacker News</a>
               <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-blue" 
@@ -94,7 +94,7 @@
               <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-green" 
                 href="https://www.medium.com">Medium</a>
             </div>
-            <div class="h-100 mt2 flex flex-column justify-between items-stretch">
+            <div class="h-100 w-third mt2 flex flex-column justify-between items-stretch">
               <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-orange" 
                 href="https://news.ycombinator.com">Hacker News</a>
               <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-blue" 
@@ -108,7 +108,7 @@
               <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-green" 
                 href="https://www.medium.com">Medium</a>
             </div>
-            <div class="h-100 mt2 flex flex-column justify-between items-stretch">
+            <div class="h-100 w-third mt2 flex flex-column justify-between items-stretch">
               <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-orange" 
                 href="https://news.ycombinator.com">Hacker News</a>
               <a class="mw-100 pa3 mr2 br2 link pointer near-white link hover-moon-gray grow o-80 bg-blue" 
@@ -124,12 +124,14 @@
             </div>
           </div>
         </div>
-        <div class="w-60 h-100 br2 bg-center z-999" style="background-image: url(./images/road_small.jpg">
+        <div class="w-60 h-100 br2 bg-center z-999" style="background-image: url(./images/road_small.jpg); min-width: 300px">
         </div>
-        <div class="w-20 h-100 ml2">
-          <div class="w-100 h-100 br2 bg-orange"></div>
+        <div class="w-30 h-100 ml2 flex flex-column items-stretch">
+          <h4 id="clock" class="w-100 f1 ma0 pa0 tracked-tight"></h4>
+          <h4 id="day" class="w-100 f1 ma0 pa0 pr1 ttl tracked-tight" style="word-wrap: break-word">Wednesday</h4>
+          <div class="h-100 w-100 br2 bg-orange"></div>
         </div>
-        <div class="w-20 bg-near-white z-999"></div>
+        <div class="w-10 bg-near-white z-999"></div>
       </div>
     </div>
   </body>
