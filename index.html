@@ -10,75 +10,77 @@
     <!--<link rel="stylesheet" href="/css/tachyons.css">-->
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css"/>
   </head>
-  <body class="sans-serif bg-dark-gray" style="transition: all .5s ease">
-    <div id="swapper" onClick="swapBgColor()" class="fr bg-near-white h1 w1 ma2 br2 ba bw1 b--gray" style="transition: all .5s ease"></div>
-    <div class="vh-100 flex items-center justify-center">
-      <div class="w-100 flex f4 fw6" style="height: 450px" >
-        <div id="blocker" class="w-10 bg-dark-gray z-999 mr2" style="transition: all .5s ease"></div>
-        <div class="w-30 h-100 flex flex-column justify-between items-stretch tc">
-          <div class="mw-100 mr2 mb2 flex br4">
-            <div id="link-group-selector-1" onClick="gotoLinkGroup(1)" class="link-group-selector pa1 h-100 w-third dib br4 br--left pointer light-gray bg-moon-gray">1</div>
-            <div id="link-group-selector-2" onClick="gotoLinkGroup(2)" class="link-group-selector pa1 h-100 w-third dib pointer light-silver bg-light-gray">2</div>
-            <div id="link-group-selector-3" onClick="gotoLinkGroup(3)" class="link-group-selector pa1 h-100 w-third dib br4 br--right pointer light-silver bg-light-gray">3</div>
-          </div>
-          <div id="link-group" class="h-100 flex flex-column flex-wrap items-stretch f3 fw6 tl tracked-tight" style="transition: all .5s ease; width: 300%">
-            <div class="h-100 w-third pr2 mt2 flex flex-column justify-between items-stretch">
-              <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-red" 
-                href="https://www.youtube.com">YouTube</a>
-              <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-orange" 
-                href="https://news.ycombinator.com">Hacker News</a>
-              <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-yellow" 
-                href="https://smile.amazon.com">Amazon</a>
-              <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-green" 
-                href="https://www.medium.com">Medium</a>
-              <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-blue" 
-                href="https://www.reddit.com">Reddit</a>
-              <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-purple" 
-                href="https://mail.protonmail.com">ProtonMail</a>
+  <body class="sans-serif">
+    <div id="body-cover" class="w-100 h-100 bg-dark-gray" style="transition: all .5s ease; transform: scale(1.01, 1.01)">
+      <div id="swapper" onClick="swapBgColor()" class="fr bg-near-white h1 w1 ma3 br2 ba bw1 b--gray" style="transition: all .5s ease"></div>
+      <div class="vh-100 flex items-center justify-center">
+        <div class="w-100 flex f4 fw6" style="height: 450px" >
+          <div id="blocker" class="w-10 bg-dark-gray z-999 mr2" style="transition: all .5s ease; transform: scale(1.02, 1)"></div>
+          <div class="w-30 h-100 flex flex-column justify-between items-stretch">
+            <div class="mw-100 mr2 flex br4 tc" style="max-height: 10%">
+              <div id="link-group-selector-1" onClick="gotoLinkGroup(1)" class="link-group-selector pa1 h-100 w-third dib br4 br--left pointer light-gray bg-moon-gray">1</div>
+              <div id="link-group-selector-2" onClick="gotoLinkGroup(2)" class="link-group-selector pa1 h-100 w-third dib pointer light-silver bg-light-gray">2</div>
+              <div id="link-group-selector-3" onClick="gotoLinkGroup(3)" class="link-group-selector pa1 h-100 w-third dib br4 br--right pointer light-silver bg-light-gray">3</div>
             </div>
-            <div class="h-100 w-third pr2 mt2 flex flex-column justify-between items-stretch">
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-light-red" 
-                href="https://www.github.com">Github</a>
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray" style="background-color: #FAAD3F" 
-                href="https://www.stackoverflow.com">Stack Overflow</a>
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-light-yellow" 
-                href="https://developer.mozilla.org/en-US/docs/Web">MDN Web Docs</a>
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-light-green" 
-                href="https://www.w3schools.com">w3schools</a>
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-light-blue" 
-                href="https://tachyons.io/docs">Tachyons</a>
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-light-purple" 
-                href="https://www.pexels.com">Pexels</a>
-            </div>
-            <div class="h-100 w-third pr2 mt2 flex flex-column justify-between items-stretch">
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow near-white bg-black" 
-                href="https://confluence360.harmonicinc.com">Confluence</a>
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow light-gray bg-near-black" 
-                href="https://jira360.harmonicinc.com">JIRA</a>
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow silver bg-mid-gray" 
-                href="https://crucible360.harmonicinc.com">Fisheye + Crucible</a>
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-silver" 
-                href="https://">Jenkins</a>
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow dark-gray bg-moon-gray" 
-                href="https://login.microsoftonline.com/common/login">Outlook</a>
-              <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow near-black bg-light-gray" 
-                href="http://harmonicinc.account.box.com">Box</a>
+            <div id="link-group" class="flex flex-column flex-wrap items-stretch f3 fw6 tl tracked-tight" style="transition: all .5s ease; width: 300%; max-height: 90%">
+              <div class="h-100 w-third pr2 mt2 flex flex-column justify-between items-stretch">
+                <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-red" 
+                  href="https://www.youtube.com">YouTube</a>
+                <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-orange" 
+                  href="https://news.ycombinator.com">Hacker News</a>
+                <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-yellow" 
+                  href="https://smile.amazon.com">Amazon</a>
+                <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-green" 
+                  href="https://www.medium.com">Medium</a>
+                <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-blue" 
+                  href="https://www.reddit.com">Reddit</a>
+                <a class="mw-100 pa3 br4 pointer near-white link hover-moon-gray grow bg-purple" 
+                  href="https://mail.protonmail.com">ProtonMail</a>
+              </div>
+              <div class="h-100 w-third pr2 mt2 flex flex-column justify-between items-stretch">
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-light-red" 
+                  href="https://www.github.com">Github</a>
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray" style="background-color: #FAAD3F" 
+                  href="https://www.stackoverflow.com">Stack Overflow</a>
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-light-yellow" 
+                  href="https://developer.mozilla.org/en-US/docs/Web">MDN Web Docs</a>
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-light-green" 
+                  href="https://www.w3schools.com">w3schools</a>
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-light-blue" 
+                  href="https://tachyons.io/docs">Tachyons</a>
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-light-purple" 
+                  href="https://www.pexels.com">Pexels</a>
+              </div>
+              <div class="h-100 w-third pr2 mt2 flex flex-column justify-between items-stretch">
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow near-white bg-black" 
+                  href="https://confluence360.harmonicinc.com">Confluence</a>
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow light-gray bg-near-black" 
+                  href="https://jira360.harmonicinc.com">JIRA</a>
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow silver bg-mid-gray" 
+                  href="https://hcr360.harmonicinc.com">Fisheye + Crucible</a>
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow mid-gray bg-silver" 
+                  href="https://hcde.harmonicinc.com">Jenkins</a>
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow dark-gray bg-moon-gray" 
+                  href="https://login.microsoftonline.com/common/login">Outlook</a>
+                <a class="mw-100 pa3 br4 pointer link hover-moon-gray grow near-black bg-light-gray" 
+                  href="http://harmonicinc.account.box.com">Box</a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="w-60 h-100 br4 bg-center z-999 flex flex-column justify-end" style="background-image: url(./images/blocks.jpg); min-width: 300px">
-          <input id="searchInput" type="search" class="h2 br4 br--bottom bw0 ph3 tracked-tight f4 fw6 bg-gray o-40 glow" autofocus="true" placeholder="search...">
-        </div>
-        <div class="w-30 h-100 ml2 flex flex-column items-stretch lh-title">
-          <div id="calendar" class="pa1 bt br bl bw3 br4 br--top b--near-white near-white" style="transition: all .5s ease">
-            <h4 id="clock" onClick="toggleDozenal()" class="w-100 f1 ma0 pa0 tracked-tight pointer"></h4>
-            <h4 id="day" class="w-100 f1 ma0 pa0 ttl tracked-tight"></h4>
-            <h4 id="month" class="w-100 f1 ma0 pa0 ttl tracked-tight"></h4>
-            <h4 id="year" class="w-100 f1 ma0 pa0 ttl tracked-tight"></h4>
+          <div class="w-60 h-100 br4 bg-center z-999 flex flex-column justify-end" style="background-image: url(./images/blocks.jpg); min-width: 300px">
+            <input id="searchInput" type="search" class="h2 br4 br--bottom bw0 ph3 tracked-tight f4 fw6 bg-gray o-40 glow" autofocus="true" placeholder="search...">
           </div>
-          <div class="h-100 w-100 br4 br--bottom bg-orange"></div>
+          <div class="w-30 h-100 ml2 flex flex-column items-stretch lh-title">
+            <div id="calendar" class="pa1 bt br bl bw3 br4 br--top b--near-white near-white" style="transition: all .5s ease">
+              <h4 id="clock" onClick="toggleDozenal()" class="w-100 f1 ma0 pa0 tracked-tight pointer"></h4>
+              <h4 id="day" class="di w-100 f1 ma0 pa0 ttl tracked-tight"></h4>
+              <h4 id="month" class="di w-100 f1 ma0 pa0 ttl tracked-tight"></h4>
+              <h4 id="year" class="w-100 f1 ma0 pa0 ttl tracked-tight"></h4>
+            </div>
+            <div class="h-100 w-100 br4 br--bottom bg-orange"></div>
+          </div>
+          <div class="w-10"></div>
         </div>
-        <div class="w-10"></div>
       </div>
     </div>
     <script type="text/javascript" src="./scripts/date-time.js"></script>

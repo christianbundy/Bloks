@@ -1,5 +1,5 @@
 function swapBgColor() {
-    let body = document.body;
+    let body = document.getElementById('body-cover');
     let right = document.getElementById('calendar');
     let left = document.getElementById('blocker');
     let swapper = document.getElementById('swapper');
